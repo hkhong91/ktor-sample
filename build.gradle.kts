@@ -22,6 +22,7 @@ repositories {
 dependencies {
   implementation("io.ktor:ktor-server-core:$ktor_version")
   implementation("io.ktor:ktor-server-netty:$ktor_version")
+  implementation("io.ktor:ktor-gson:$ktor_version")
   implementation("org.ktorm:ktorm-core:${ktorm_version}")
   implementation("org.ktorm:ktorm-support-mysql:${ktorm_version}")
   implementation("mysql:mysql-connector-java:8.0.25")
