@@ -1,18 +1,21 @@
 package com.example.application
 
-import com.example.application.response.MemberResponse
-import com.example.domain.repository.MemberRepository
+import com.example.application.request.LoginRequest
+import com.example.application.service.MemberService
 import io.ktor.application.*
+import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
 fun Application.configureRouting() {
 
   routing {
-    val memberRepository = MemberRepository()
+    val memberService = MemberService()
 
-    get("/") {
-      call.respond(memberRepository.findAll().map { MemberResponse.of(it) })
+    post("/members/login") {
+      val requestBody = call.receive<LoginRequest>()
+      val responseBody = memberService.login(requestBody)
+      call.respond(responseBody)
     }
   }
   routing {

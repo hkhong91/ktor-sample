@@ -1,4 +1,4 @@
-package com.example.domain.entity
+package com.example.domain.schema
 
 import org.ktorm.entity.Entity
 import org.ktorm.schema.Table
@@ -19,4 +19,8 @@ interface Member : Entity<Member> {
   val loginId: String
   val name: String
   val password: String
+
+  fun check(password: String): Boolean {
+    return this.password == password
+  }
 }

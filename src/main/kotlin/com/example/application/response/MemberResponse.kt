@@ -1,6 +1,6 @@
 package com.example.application.response
 
-import com.example.domain.entity.Member
+import com.example.domain.schema.Member
 
 data class MemberResponse(
   val id: Int,
