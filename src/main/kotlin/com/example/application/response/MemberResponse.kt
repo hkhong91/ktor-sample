@@ -11,7 +11,7 @@ data class MemberResponse(
   companion object {
     fun of(member: Member): MemberResponse {
       return MemberResponse(
-        id = member.id,
+        id = member.id!!,
         loginId = member.loginId,
         name = member.name,
         password = member.password

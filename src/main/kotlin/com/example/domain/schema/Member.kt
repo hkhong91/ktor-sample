@@ -15,7 +15,7 @@ object MemberTable : Table<Member>("member") {
 interface Member : Entity<Member> {
   companion object : Entity.Factory<Member>()
 
-  val id: Int
+  var id: Int?
   val loginId: String
   val name: String
   val password: String
