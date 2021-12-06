@@ -19,8 +19,4 @@ interface Member : Entity<Member> {
   val loginId: String
   val name: String
   val password: String
-
-  fun check(password: String): Boolean {
-    return this.password == password
-  }
 }

@@ -12,7 +12,7 @@ class MemberService {
 
   fun login(request: LoginRequest): MemberResponse {
     val member = memberRepository.findByLoginId(request.loginId) ?: throw NotFoundException()
-    if (!member.check(request.password)) {
+    if (member.password != request.password) {
       throw NotFoundException()
     }
     return MemberResponse(
