@@ -31,6 +31,12 @@ fun Application.configureRouting() {
       val responseBody = memberService.update(memberId!!, requestBody)
       call.respond(responseBody)
     }
+
+    delete("/members/{memberId}") {
+      val memberId = call.parameters["memberId"]?.toInt()
+      val responseBody = memberService.delete(memberId!!)
+      call.respond(responseBody)
+    }
   }
   routing {
   }

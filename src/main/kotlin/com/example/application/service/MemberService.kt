@@ -6,6 +6,7 @@ import com.example.application.response.MemberResponse
 import com.example.domain.schema.MemberTable
 import com.example.infrastructure.DatabaseConnection
 import io.ktor.features.*
+import org.ktorm.dsl.delete
 import org.ktorm.dsl.eq
 import org.ktorm.dsl.insertAndGenerateKey
 import org.ktorm.dsl.update
@@ -55,14 +56,24 @@ class MemberService {
       }
     }
 
-    if (result > 0) {
+    if (result == 0) {
+      throw NotFoundException()
+    } else {
       return MemberResponse(
         id = memberId,
         loginId = request.loginId,
         name = request.name,
         password = request.password
       )
-    } else {
+    }
+  }
+
+  fun delete(memberId: Int) {
+    val result = database.delete(MemberTable) {
+      it.id eq memberId
+    }
+
+    if (result == 0) {
       throw NotFoundException()
     }
   }
